@@ -1,32 +1,36 @@
 import sqlite3
+import logging
+
 
 class ContentDB:
-  db_name = "database.db"
-  conn = ""
 
-  def commit(self):
-    self.conn.commit()
+  def __init__(self, db_name="database.db"):
+    self._db_name = db_name
+    self._connect_to_db()
+    self._logger = logging.getLogger(__name__)
 
-  def connect_to_db(self):
-    self.conn = sqlite3.connect(self.db_name)
-    self.c = self.conn.cursor()
+  def _commit(self):
+    self._conn.commit()
+
+  def _connect_to_db(self):
+    self._conn = sqlite3.connect(self._db_name)
+    self._c = self._conn.cursor()
 
   def cc(self):
-    self.conn.commit()
-    self.conn.close()
+    self._conn.commit()
+    self._conn.close()
 
-  def table_exists(self, c, table_name):
-    #SQLStatement = "SELECT name FROM sqlite_master WHERE type='table' AND name='%s';".format(table_name) 
-    SQLStatement = "SELECT count(name) FROM sqlite_master WHERE type='table' AND name='emp';"
-    self.c.execute(SQLStatement)
+  def _debugPrint(self):
+    self._logger.debug(self._conn.cursor().execute("SELECT * FROM emp").fetchall())
 
+  def _execute(self, statement):
     try:
-      if(self.c.fetchone()[0] == 1):
-        return True
-      else:
-        return False
-    except (TypeError) as err:
-        return False 
+        self._c.execute(statement)
+        self._commit()
+        self._debugPrint()
+    except TypeError as error:
+        self._logger.debug("Failed to execute statement. %s", err)
+        raise Execution
 
 
   '''
@@ -42,42 +46,9 @@ class ContentDB:
       gender CHAR(1),
       joining DATE
     );""".format(table_name)
-    # logger.debug(SQL_STATEMENT)
+    self._logger.debug(SQL_STATEMENT)
+    self._execute(SQL_STATEMENT)
+        
 
-    if(self.table_exists(self.c, table_name)):
-      self.commit()
-      # logger.debug("Table {} exists".format(table_name))
-    else:
-      self.c.execute(SQL_STATEMENT)
-      self.commit()
-      # logger.debug("Created table {}.".format(table_name))
-
-  def rest_of_stuff(self):
-    #self.connect_to_db()
-    # Insert some users into our database
-    try:
-      self.conn.cursor().execute("""INSERT INTO emp VALUES (23, "Rishabh", "Bansal", "M", "2014-03-28");""")
-      self.conn.cursor().execute("""INSERT INTO emp VALUES (1, "Bill", "Gates", "M", "1980-10-28");""")
-      self.commit()
-    except sqlite3.IntegrityError:
-      print("Failed to add entries.")
-    # Fetch the data 
-    
-    self.conn.cursor().execute("SELECT name FROM sqlite_master WHERE type='table'")
-    print(self.conn.cursor().fetchall())
-    # self.conn.cursor().execute("SELECT * FROM emp")
-
-    # Store + print the fetched data
-    result = self.conn.cursor().fetchall()
-    print(result)
-    for i in result:
-      print(i)
-
-    """ Printed:
-    (1, 'Bill', 'Gates', 'M', '1980-10-28')
-    (23, 'Rishabh', 'Bansal', 'M', '2014-03-28')
-    """
-
-    # Remember to save + close
-    self.commit()
-    self.conn.close()
+  def close(self):
+    self._conn.close()
