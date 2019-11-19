@@ -9,11 +9,13 @@ tox:
 
 test:
 	pytest test/
+
 requirements: 
-	@pip install -r requirements.txt
+	@pip install -r requirements.txt --user
 
 clean-db:
 	@rm -f database.db
 
 clean:
-	rm -rf database.db temp __pycache__ venv
+	rm -rf database.db */__pycache__ venv *.egg-info/
+
