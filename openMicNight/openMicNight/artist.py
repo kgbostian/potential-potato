@@ -2,42 +2,43 @@ from openMicNight.user import User
 
 
 class Artist(User):
-    _songs = []
-    _playlist = []
-    _ratings = []
-    _currentRating = 0
+    __songs = [] 
+    __playlist = []
+    __ratings = []
+    __currentRating = 0
 
-    def get_info(self):
-        print(
-            "Songs: {self._songs}\
-               Playlist: {self._playlist}\
-               Ratings: {self._ratings}\
-               CurrentRating: {self._currentRating}"
-        )
+    def add_song(self, data):
+        if data not in self.__songs:
+            self.__songs.append(data)
+        else:
+            #logger.info(f"{data} already exists.")
+            print(f"{data} already exists.")
         return None
 
-    def _add_song(self, data):
-        self._songs.append(data["song"])
-        return None
-
-    def _remove_song(self, song):
+    def remove_song(self, song):
         try:
-            self._songs.remove(song)
-            self._playlist.remove(song)
+            self.__songs.remove(song)
+            self.__playlist.remove(song)
             return None
         except Exception as err:
-            raise err
+            raise
 
-    def _add_to_playlist(self, song):
+    def add_to_playlist(self, song):
         try:
-            # bisect.insort(_playlist, song)
+            bisect.insort(self.__playlist, song)
             return None
         except Exception as err:
-            raise err
+            raise
 
-    def _remove_from_playlist(self, song):
+    def remove_from_playlist(self, song):
         try:
-            self._playlist.remove(song)
+            self.__playlist.remove(song)
             return None
         except Exception as err:
-            raise err
+            raise
+    
+    def get_song_list(self):
+       return self.__songs
+
+    def get_playlist(self):
+        return self.__playlist

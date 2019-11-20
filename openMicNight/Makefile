@@ -13,10 +13,10 @@ tox:
 
 .PHONY : test
 test: coverage
-	pytest 
+	pytest -v
 
 coverage:
-	pytest --cov=openMicNight test/
+	pytest -v --cov=openMicNight test/
 
 requirements:	requirements.txt
 	@pip install -r requirements.txt
