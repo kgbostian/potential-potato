@@ -1,0 +1,11 @@
+appdirs
+attrs
+black
+Click
+pathspec
+regex
+toml
+typed-ast
+pytest
+pylama
+pytest-cov

@@ -1,10 +1,13 @@
 import setuptools
+from setuptools import setup, find_packages
+
+setup(name="openMicNight", packages=find_packages())
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="db-practice-scorpion", # Replace with your own username
+    name="openMicNight", 
     version="0.0.1",
     author="Scorpion",
     author_email="author@example.com",
@@ -20,3 +23,4 @@ setuptools.setup(
     ],
     python_requires='>=3.6',
 )
+

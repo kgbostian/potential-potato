@@ -1,5 +1,6 @@
 from content import ContentDB
 import logging
+
 # import pdb
 # pdb.set_trace()
 
@@ -11,8 +12,16 @@ cdb.create_table(table_name, "contents")
 
 # Insert some users into our database
 try:
-    cdb.add_entry({"table": table_name, "staff_number": 22, "fname": "Rishabh",
-                   "lname": "Bansal", "gender": "M", "joining": "2014-03-28"})
+    cdb.add_entry(
+        {
+            "table": table_name,
+            "staff_number": 22,
+            "fname": "Rishabh",
+            "lname": "Bansal",
+            "gender": "M",
+            "joining": "2014-03-28",
+        }
+    )
     # cdb.add_entry(table_name, 2, "Bill", "Gates", "M", "1980-10-28")
     cdb._commit()
 except Exception:

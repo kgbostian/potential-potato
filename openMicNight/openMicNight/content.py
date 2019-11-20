@@ -94,7 +94,7 @@ class ContentDB:
         self._logger.debug(f"Getting entry {sID}")
         try:
             if sID:
-                SQL_STATEMENT = f"SELECT * from {tbl} WHERE staff_number={sID};" # noqa
+                SQL_STATEMENT = f"SELECT * from {tbl} WHERE staff_number={sID};"  # noqa
             else:
                 SQL_STATEMENT = f"SELECT * from {tbl};"
             self._execute(SQL_STATEMENT)
