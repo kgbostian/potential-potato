@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - checkout
-      - run: cd openMicNight
+      #- run: cd openMicNight
       - run: find . -print
       - run: pwd
       - run: poetry
@@ -22,7 +22,7 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            poetry install
+            cd openMicNight && poetry install
       #- save_cache:
       #    key: deps9-{{ .Branch }}-{{ checksum "poetry.lock" }}
       #    paths:
