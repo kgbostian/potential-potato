@@ -1,4 +1,4 @@
-from openMicNight.user import User
+from openmicnight.user import User
 
 def test_user_defaults():
     username = "my_user"

@@ -13,7 +13,7 @@ tox:
 
 .PHONY : test
 test: coverage
-	pytest -v
+	#pytest -v
 
 coverage:
 	pytest -v --cov=openMicNight test/
