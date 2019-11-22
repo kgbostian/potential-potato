@@ -7,14 +7,14 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.7.3
-    working_directory: ~/openMicNight/openMicNight
+    working_directory: ~/openMicNight/
 
     steps:
       - checkout
       #- run: cd openMicNight
-      - run: find . -print
-      - run: pwd
-      - run: poetry
+      #- run: find . -print
+      #- run: pwd
+      #- run: poetry
       - run: sudo chown -R circleci:circleci /usr/local/bin
       - run: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
       #- restore_cache:
@@ -27,11 +27,11 @@ jobs:
       #    key: deps9-{{ .Branch }}-{{ checksum "poetry.lock" }}
       #    paths:
       #      - "/home/circleci/.cache/pypoetry/virtualenvs"
-      #- run:
-      #    name: Analysis
-      #    command: |
-      #      make analysis
-      #- run:
-      #    name: Tests
-      #    command: |
-      #      make test
+      - run:
+          name: Analysis
+          command: |
+            cd openMicNight && make analysis
+      - run:
+          name: Tests
+          command: |
+            cd openMicNight && make test
