@@ -7,10 +7,11 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.7.3
-    working_directory: ~/openMicNight
+    working_directory: ~/openMicNight/openMicNight
 
     steps:
       - checkout
+      - run: cd openMicNight
       - run: ls -al
       - run: pwd
       - run: poetry
