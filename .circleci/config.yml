@@ -11,16 +11,17 @@ jobs:
 
     steps:
       - checkout
-      - run: ls
+      - run: ls -al
       - run: pwd
-      #- run: sudo chown -R circleci:circleci /usr/local/bin
-      #- run: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
+      - run: poetry
+      - run: sudo chown -R circleci:circleci /usr/local/bin
+      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
       #- restore_cache:
       #    key: deps9-{{ .Branch }}-{{ checksum "poetry.lock" }}
-      #- run:
-      #    name: install dependencies
-      #    command: |
-      #      poetry install
+      - run:
+          name: install dependencies
+          command: |
+            poetry install
       #- save_cache:
       #    key: deps9-{{ .Branch }}-{{ checksum "poetry.lock" }}
       #    paths:
