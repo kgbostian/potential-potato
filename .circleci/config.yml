@@ -11,10 +11,6 @@ jobs:
 
     steps:
       - checkout
-      #- run: cd openMicNight
-      #- run: find . -print
-      #- run: pwd
-      #- run: poetry
       - run: sudo chown -R circleci:circleci /usr/local/bin
       - run: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
       #- restore_cache:
