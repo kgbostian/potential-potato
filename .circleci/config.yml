@@ -1,0 +1,33 @@
+# Python CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-python/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.7.3
+    working_directory: ~/openMicNight
+
+    steps:
+      - checkout
+      - run: sudo chown -R circleci:circleci /usr/local/bin
+      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
+      - restore_cache:
+          key: deps9-{{ .Branch }}-{{ checksum "poetry.lock" }}
+      - run:
+          name: install dependencies
+          command: |
+            poetry install
+      - save_cache:
+          key: deps9-{{ .Branch }}-{{ checksum "poetry.lock" }}
+          paths:
+            - "/home/circleci/.cache/pypoetry/virtualenvs"
+      - run:
+          name: Analysis
+          command: |
+            make analysis
+      - run:
+          name: Tests
+          command: |
+            make test

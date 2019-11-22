@@ -1,31 +1,22 @@
-run: linter clean-db tox
-	@python src/main.py
+PACKAGE_NAME = openmicnight
+PYTEST_COV = --cov=$(PACKAGE_NAME) --cov-report term-missing --cov-report html tests/
+PYTEST_ARGS = -vvl --junitxml=artifacts/test_results/junit.xml $(PYTEST_COV)
+VENV = poetry run
 
-.PHONY : lint
-lint:
-	@pylama src/
+.PHONY : analysis
+analysis:
+	$(VENV) pylama openmicnight/
 
 .PHONY : auto-format
 auto-format: 
-	black openMicNight/
-tox:
-	tox
+	black openmicnight/
 
 .PHONY : test
-test: coverage
-	#pytest -v
-
-coverage:
-	pytest -v --cov=openMicNight test/
+test: 
+	$(VENV) pytest $(PYTEST_ARGS)
 
 requirements:	requirements.txt
-	@pip install -r requirements.txt
-
-clean-db:
-	@rm -f database.db
+	poetry install
 
 clean:
-	rm -rf database.db */__pycache__ venv *.egg-info/
-
-venv: 
-	virtualenv venv
+	rm -rf .coverage database.db */__pycache__ *.egg-info/
