@@ -11,23 +11,25 @@ jobs:
 
     steps:
       - checkout
-      - run: sudo chown -R circleci:circleci /usr/local/bin
-      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
-      - restore_cache:
-          key: deps9-{{ .Branch }}-{{ checksum "poetry.lock" }}
-      - run:
-          name: install dependencies
-          command: |
-            poetry install
-      - save_cache:
-          key: deps9-{{ .Branch }}-{{ checksum "poetry.lock" }}
-          paths:
-            - "/home/circleci/.cache/pypoetry/virtualenvs"
-      - run:
-          name: Analysis
-          command: |
-            make analysis
-      - run:
-          name: Tests
-          command: |
-            make test
+      - run: ls
+      - run: pwd
+      #- run: sudo chown -R circleci:circleci /usr/local/bin
+      #- run: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
+      #- restore_cache:
+      #    key: deps9-{{ .Branch }}-{{ checksum "poetry.lock" }}
+      #- run:
+      #    name: install dependencies
+      #    command: |
+      #      poetry install
+      #- save_cache:
+      #    key: deps9-{{ .Branch }}-{{ checksum "poetry.lock" }}
+      #    paths:
+      #      - "/home/circleci/.cache/pypoetry/virtualenvs"
+      #- run:
+      #    name: Analysis
+      #    command: |
+      #      make analysis
+      #- run:
+      #    name: Tests
+      #    command: |
+      #      make test
