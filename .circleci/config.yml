@@ -12,7 +12,7 @@ jobs:
     steps:
       - checkout
       - run: cd openMicNight
-      - run: tree
+      - run: find . -print
       - run: pwd
       - run: poetry
       - run: sudo chown -R circleci:circleci /usr/local/bin
