@@ -50,6 +50,9 @@ jobs:
           name: Install CMAKE
           command: 'apt-get update && sudo apt-get install -y cmake'
       - run:
+          name: Install GTest
+          command: 'sudo apt-get install -y libgtest-dev'
+      - run:
           name: Build GTest
           command: 'cd cppOpenMicNight && ./install_gtest.sh'
       - run:
