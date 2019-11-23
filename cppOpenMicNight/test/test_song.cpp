@@ -3,11 +3,16 @@
 
 TEST(SongTest, Defaults)
 {
-    ASSERT_EQ(5,5);
+    Song newSong("Test Song");
+    EXPECT_EQ(0, newSong.getCount());
+    EXPECT_STREQ("Test Song", newSong.getName().c_str());
 }
 
 
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
+
+TEST(SongTest, CountIncr)
+{
+    Song newSong("CountIncr");
+    newSong.incrementCount();
+    EXPECT_EQ(1, newSong.getCount());
 }
