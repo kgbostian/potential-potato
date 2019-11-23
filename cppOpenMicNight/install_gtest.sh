@@ -2,5 +2,5 @@
 cd /usr/src/gtest
 sudo cmake CMakeLists.txt
 sudo make
-sudo cp *.a /usr/lib
+sudo make install
 
