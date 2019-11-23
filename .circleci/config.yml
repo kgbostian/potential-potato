@@ -51,13 +51,13 @@ jobs:
           command: 'apt-get update && sudo apt-get install -y cmake'
       - run:
           name: Build Makefile
-          command: 'cmake CMakeLists.txt'
+          command: 'cd cppOpenMicNight && cmake CMakeLists.txt'
       - run:
           name: Build Src
-          command: 'make'
+          command: 'cd cppOpenMicNight && make'
       - run:
           name: Run Tests
-          command: './runtest'
+          command: 'cd cppOpenMicNight && ./runtest'
 
 workflows:
   version: 2
