@@ -9,3 +9,11 @@ cd /usr/src/gtest
 sudo cmake CMakeLists.txt
 sudo make
 sudo cp *.a /usr/lig
+
+
+
+
+To compile and run the simple program.
+cmake CMakeLists.txt
+make
+./runTest
