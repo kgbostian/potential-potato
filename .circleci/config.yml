@@ -35,6 +35,7 @@ jobs:
   build_cpp:
     docker:
       - image: "debian:stretch"
+    working_directory: ~/cppOpenMicNight/
     steps:
       - checkout
       - run:
@@ -47,8 +48,14 @@ jobs:
           name: Install CMAKE
           command: 'apt-get update && sudo apt-get install -y cmake'
       - run:
+          name: Build Makefile
+          command: 'cmake CMakeLists.txt'
+      - run:
+          name: Build Src
+          command: 'make'
+      - run:
           name: Run Tests
-          command: 'cmake CMakeLists.txt && make && ./runtest'
+          command: './runtest'
 
 workflows:
   version: 2
