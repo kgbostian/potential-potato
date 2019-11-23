@@ -35,7 +35,7 @@ jobs:
   build_cpp:
     docker:
       - image: "debian:stretch"
-    working_directory: ~/openMicNight/cppOpenMicNight/
+    working_directory: ~/cppOpenMicNight/
     steps:
       - checkout
       - run: ls -al
