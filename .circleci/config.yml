@@ -63,7 +63,7 @@ jobs:
           command: 'cd cppOpenMicNight && make'
       - run:
           name: Run Tests
-          command: 'cd cppOpenMicNight && ./AllTests'
+          command: 'cd cppOpenMicNight && ./allTests'
 
 workflows:
   version: 2
