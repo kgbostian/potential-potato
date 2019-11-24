@@ -1,15 +1,17 @@
+#ifndef __ALBUM__
+#define __ALBUM__
 #include<string>
 #include<list>
-#include "song.h"
+#include "Song.h"
 
 class Album
 {
     std::string name = "";
     std::list<Song> songList;
   public:
-    void addSong(Song song);
+    Album(std::string name);
+    void addSong(Song &song);
     std::string getName(){return name;};
-
-  private:
-    
+    std::list<Song> getSongList();
 };
+#endif
