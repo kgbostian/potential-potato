@@ -1,5 +1,5 @@
-#ifndef __ALBUM__
-#define __ALBUM__
+#ifndef __ALBUM_H__
+#define __ALBUM_H__
 #include<string>
 #include<list>
 #include "Song.h"

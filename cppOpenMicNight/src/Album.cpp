@@ -1,3 +1,5 @@
+#ifndef __ALBUM_CPP__
+#define __ALBUM_CPP__
 #include "Album.h"
 
 Album::Album(std::string name)
@@ -15,3 +17,4 @@ std::list<Song> Album::getSongList()
 {
     return songList;
 };
+#endif
