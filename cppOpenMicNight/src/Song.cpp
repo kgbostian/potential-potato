@@ -5,6 +5,11 @@ Song::Song(std::string name)
 {
     this->name = name;
 };
+
+int Song::getCount()
+{
+    return count;
+}
 #endif
 
 

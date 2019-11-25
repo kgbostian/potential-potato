@@ -1,4 +1,4 @@
-#include "Album.h"
+#include "Album.cpp"
 #include "gtest/gtest.h"
 
 TEST(AlbumTests, DefaultAlbum)
@@ -7,11 +7,12 @@ TEST(AlbumTests, DefaultAlbum)
     ASSERT_STREQ("New Album", a.getName().c_str());
 };
 
-TEST(AlbumTests, AddSongs)
+
+TEST(AlbumTests, DISABLED_AddSongs)
 {
-    //Album a = Album();
-    //Song s = Song("Adding Song");
-    //a.addSong(s);
-    //std::list<Song> sl = a.getSongList();
-    //ASSERT_EQ(1,sl.size());
+    Album a = Album("Add Songs Album");
+    Song s = Song("Adding Song");
+    a.addSong(s);
+    std::list<Song> sl = a.getSongList();
+    ASSERT_EQ(1,sl.size());
 };

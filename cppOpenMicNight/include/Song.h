@@ -10,7 +10,7 @@ class Song
     int request_count = 0;
   public:
     Song(std::string name);
-    int getCount() {return count;};
+    int getCount();
     void incrementCount(){count++;};
     int getRequestCount(){return request_count;};
     void incrementRequestCount(){request_count++;};
