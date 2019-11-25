@@ -1,4 +1,4 @@
-#include "Song.cpp"
+#include "Song.h"
 #include "gtest/gtest.h"
 
 TEST(SongTest, Defaults)

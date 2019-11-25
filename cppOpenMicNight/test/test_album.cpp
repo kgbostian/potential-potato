@@ -1,4 +1,4 @@
-#include "Album.cpp"
+#include "Album.h"
 #include "gtest/gtest.h"
 
 TEST(AlbumTests, DefaultAlbum)
