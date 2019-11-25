@@ -9,12 +9,11 @@ Album::Album(std::string name)
 
 void Album::addSong(Song &song)
 {
-    //songlist.insert(song);
-    //songlist.sort(); 
+    song_list.insert(song);
 };
 
-std::list<Song> Album::getSongList()
+std::set<Song> Album::getSongList()
 {
-    return songList;
+    return song_list;
 };
 #endif

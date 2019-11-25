@@ -8,11 +8,21 @@ TEST(AlbumTests, DefaultAlbum)
 };
 
 
-TEST(AlbumTests, DISABLED_AddSongs)
+TEST(AlbumTests, AddSongs)
 {
     Album a = Album("Add Songs Album");
-    Song s = Song("Adding Song");
-    a.addSong(s);
-    std::list<Song> sl = a.getSongList();
-    ASSERT_EQ(1,sl.size());
+    Song s1 = Song("Adding Song");
+    Song s2 = Song("Adding Song Two");
+    a.addSong(s1);
+    std::set<Song> songs = a.getSongList();
+    ASSERT_EQ(1,songs.size());
+    a.addSong(s2);
+    songs = a.getSongList();
+    ASSERT_EQ(2,songs.size());
+    //std::set<Song>::iterator it;
+    //for (it = songs.begin(); it != songs.end(); ++it)
+    //{
+    //    std::cout << ' ' << *it;
+    //    std::cout << '\n';
+    //}
 };
