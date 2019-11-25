@@ -2,6 +2,7 @@
 #define __SONG__
 
 #include <string>
+#include <iostream>
  
 class Song
 {
@@ -10,11 +11,13 @@ class Song
     int request_count = 0;
   public:
     Song(std::string name);
-    int getCount() {return count;};
+    bool operator<(const Song &rhs) const;
+    friend std::ostream& operator<<(std::ostream &os, const Song& s);
+    int getCount();
     void incrementCount(){count++;};
     int getRequestCount(){return request_count;};
     void incrementRequestCount(){request_count++;};
-    std::string getName(){return name;};
+    std::string getName() const {return name;};
     void setName(std::string name){this->name = name;};
 };
 #endif
