@@ -13,8 +13,10 @@ int Song::getCount()
 
 bool Song::operator<(const Song &rhs) const
 {
-    return getName().c_str() < rhs.getName().c_str();
+    bool result = getName().c_str() < rhs.getName().c_str();
+    return result;
 }
+
 
 std::ostream& operator<<(std::ostream& os, const Song& s)
 {

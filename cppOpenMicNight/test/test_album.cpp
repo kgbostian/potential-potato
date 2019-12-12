@@ -14,15 +14,24 @@ TEST(AlbumTests, AddSongs)
     Song s1 = Song("Adding Song");
     Song s2 = Song("Adding Song Two");
     a.addSong(s1);
-    std::set<Song> songs = a.getSongList();
+    SongSet songs = a.getSongList();
     ASSERT_EQ(1,songs.size());
     a.addSong(s2);
     songs = a.getSongList();
     ASSERT_EQ(2,songs.size());
-    //std::set<Song>::iterator it;
-    //for (it = songs.begin(); it != songs.end(); ++it)
-    //{
-    //    std::cout << ' ' << *it;
-    //    std::cout << '\n';
-    //}
+    a.print();
+};
+
+TEST(AlbumTests, RemoveSongs)
+{
+    Album a = Album("Add Songs Album");
+    Song s1 = Song("Adding Song");
+    Song s2 = Song("Adding Song Two");
+    a.addSong(s1);
+    SongSet songs = a.getSongList();
+    ASSERT_EQ(1,songs.size());
+    a.removeSong(s1);
+    songs = a.getSongList();
+    a.print();
+    ASSERT_EQ(0,songs.size());
 };

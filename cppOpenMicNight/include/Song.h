@@ -12,6 +12,8 @@ class Song
   public:
     Song(std::string name);
     bool operator<(const Song &rhs) const;
+    //bool operator()(const Song &lhs, const Song &rhs);
+    bool operator()(const Song &rhs) const;
     friend std::ostream& operator<<(std::ostream &os, const Song& s);
     int getCount();
     void incrementCount(){count++;};
