@@ -11,9 +11,13 @@ sudo make
 sudo cp *.a /usr/lig
 
 
-
+To get coverage reports.
+- make the project (instructions below)
+cd build
+gcov *.gc* -km
 
 To compile and run the simple program.
-cmake CMakeLists.txt
+mkdir build && cd build
+cmake ..
 make
-./runTest
+./allTests

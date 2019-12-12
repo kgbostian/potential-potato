@@ -20,14 +20,14 @@ void Album::addSong(Song song)
 
 void Album::removeSong(Song &song)
 {
-    std::cout << "Removing song: " << song.getName() << std::endl;
-    SongSet::iterator si = song_list.find(song);
-    std::cout << "After the song_list.find()" << std::endl;
-    std::cout << "si = " << (*si).getName() << std::endl;
+    //std::cout << "Removing song: " << song.getName() << std::endl;
+    //SongSet::iterator si = song_list.find(song.getName());
+    //std::cout << "After the song_list.find()" << std::endl;
+    //std::cout << "si = " << (*si).getName() << std::endl;
     //int x = song_list.erase(*si);
     //print();
-    //int x = song_list.erase(song);
-    print();
+    int x = song_list.erase(song);
+    //print();
     //std::cout << x << " items removed from the set." << std::endl;
 };
 
@@ -39,7 +39,7 @@ SongSet Album::getSongList()
 void Album::print()
 {
     SongSet::iterator it;
-    std::cout << "Album contains:";
+    std::cout << "Album contains:" << std::endl;
     for (it=song_list.begin(); it!=song_list.end(); ++it)
         std::cout << ' ' << (*it) << std::endl;
     std::cout << '\n'; 
