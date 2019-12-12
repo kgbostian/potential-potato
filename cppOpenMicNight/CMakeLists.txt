@@ -9,9 +9,9 @@ include_directories(
 # Locate GTest
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
-
-
-
+SET(CMAKE_CXX_FLAGS "-g -O0 -Wall -fprofile-arcs -ftest-coverage")
+SET(CMAKE_C_FLAGS "-g -O0 -Wall -W -fprofile-arcs -ftest-coverage")
+SET(CMAKE_EXE_LINKER_FLAGS "-fprofile-arcs -ftest-coverage")
 # Link runTests with what we want to test and the GTest and pthread library
 add_executable(allTests test/AllTests.cpp src/Song.cpp src/Album.cpp)
 target_link_libraries(allTests ${GTEST_LIBRARIES} pthread gtest_main gcov)
