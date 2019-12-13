@@ -20,18 +20,10 @@ void Album::addSong(Song song)
 
 void Album::removeSong(Song &song)
 {
-    //std::cout << "Removing song: " << song.getName() << std::endl;
-    //SongSet::iterator si = song_list.find(song.getName());
-    //std::cout << "After the song_list.find()" << std::endl;
-    //std::cout << "si = " << (*si).getName() << std::endl;
-    //int x = song_list.erase(*si);
-    //print();
-    int x = song_list.erase(song);
-    //print();
-    //std::cout << x << " items removed from the set." << std::endl;
+    song_list.erase(song);
 };
 
-SongSet Album::getSongList()
+SongSet Album::getSongs()
 {
     return song_list;
 };

@@ -15,15 +15,14 @@ TEST(AlbumTests, AddSongs)
     Song s2 = Song("Song C");
     Song s3 = Song("Song B");
     a.addSong(s1);
-    SongSet songs = a.getSongList();
+    SongSet songs = a.getSongs();
     ASSERT_EQ(1,songs.size());
     a.addSong(s2);
-    songs = a.getSongList();
+    songs = a.getSongs();
     ASSERT_EQ(2,songs.size());
     a.addSong(s3);
-    songs = a.getSongList();
+    songs = a.getSongs();
     ASSERT_EQ(3,songs.size());
-    //a.print();
 };
 
 TEST(AlbumTests, RemoveSongs)
@@ -32,10 +31,9 @@ TEST(AlbumTests, RemoveSongs)
     Song s1 = Song("Song One");
     Song s2 = Song("Song Two");
     a.addSong(s1);
-    SongSet songs = a.getSongList();
+    SongSet songs = a.getSongs();
     ASSERT_EQ(1,songs.size());
     a.removeSong(s1);
-    songs = a.getSongList();
-    //a.print();
+    songs = a.getSongs();
     ASSERT_EQ(0,songs.size());
 };

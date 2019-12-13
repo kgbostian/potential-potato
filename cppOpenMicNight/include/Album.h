@@ -8,13 +8,13 @@ typedef std::set<Song> SongSet;
 class Album
 {
     std::string name = "";
-    std::set<Song> song_list;
+    SongSet song_list;
   public:
     Album(std::string name);
     void addSong(Song song);
     void removeSong(Song &song);
     std::string getName(){return name;};
-    SongSet getSongList();
+    SongSet getSongs();
     void print();
 };
 #endif
