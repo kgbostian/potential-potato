@@ -11,12 +11,12 @@ class Artist
     AlbumSet album_set;
   public:
     Artist(std::string name);
+    std::string getName(){return name;};
+    void addAlbum(std::string album);
 //    void addSong(std::string song);
 //    void removeSong(std::string album_name, std::string song_name);
-//    void addAlbum(std::string album);
-//    void removeAblum(std::string &album);
-    std::string getName(){return name;};
 //    AlbumSet getAlbums();
+//    void removeAblum(std::string &album);
     void print();
 };
 #endif

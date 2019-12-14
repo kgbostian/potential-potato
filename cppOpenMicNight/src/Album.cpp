@@ -2,12 +2,6 @@
 #define __ALBUM_CPP__
 #include "Album.h"
 
-//struct CustomCompare
-//bool operator()(const Song &lhs, const Song &rhs)
-//{
-//    return lhs.getName().c_str() < rhs.getName().c_str();
-//}
-
 Album::Album(std::string name)
 {
    this->name = name;
@@ -27,6 +21,12 @@ SongSet Album::getSongs()
 {
     return song_list;
 };
+
+bool Album::operator<(const Album &rhs) const
+{
+    bool result = getName() < rhs.getName();
+    return result;
+}
 
 void Album::print()
 {

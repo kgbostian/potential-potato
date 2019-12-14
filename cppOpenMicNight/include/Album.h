@@ -13,7 +13,9 @@ class Album
     Album(std::string name);
     void addSong(Song song);
     void removeSong(Song &song);
-    std::string getName(){return name;};
+    std::string getName()const{return name;};
+    bool operator<(const Album &rhs) const;
+    //virtual bool operator()(const Album &rhs) const;
     SongSet getSongs();
     void print();
 };
