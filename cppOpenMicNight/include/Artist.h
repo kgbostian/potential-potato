@@ -13,9 +13,9 @@ class Artist
     Artist(std::string name);
     std::string getName(){return name;};
     void addAlbum(std::string album);
+    AlbumSet getAlbums();
 //    void addSong(std::string song);
 //    void removeSong(std::string album_name, std::string song_name);
-//    AlbumSet getAlbums();
 //    void removeAblum(std::string &album);
     void print();
 };

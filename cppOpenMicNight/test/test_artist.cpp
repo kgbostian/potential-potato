@@ -17,6 +17,7 @@ TEST(ArtistTests, AddSongs)
     Song s2 = Song("Song C");
     Song s3 = Song("Song B");
     a.addAlbum(an1);
+    ASSERT_EQ(1, a.getAlbums().size());
     //a.addSong(an1, s1);
     //ASSERT_EQ(1,songs.size());
     //a.addSong(an, s2);

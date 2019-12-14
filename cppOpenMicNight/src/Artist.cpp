@@ -13,10 +13,10 @@ void Artist::addAlbum(std::string album_name)
     album_set.insert(new_album);
 };
 
-//AlbumSet Artist::getAlbums()
-//{
-//    return album_set;
-//};
+AlbumSet Artist::getAlbums()
+{
+    return album_set;
+};
 //void Artist::addSong(std::string album_name, std::string song_name)
 //{
 //    AlbumSet::iterator ai = album_list.find(album_name)
