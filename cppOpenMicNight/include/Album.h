@@ -15,6 +15,7 @@ class Album
     void removeSong(Song &song);
     std::string getName()const{return name;};
     bool operator<(const Album &rhs) const;
+    friend std::ostream& operator<<(std::ostream& os, const Album& a);
     //virtual bool operator()(const Album &rhs) const;
     SongSet getSongs();
     void print();

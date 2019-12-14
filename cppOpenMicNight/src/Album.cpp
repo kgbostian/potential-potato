@@ -28,12 +28,17 @@ bool Album::operator<(const Album &rhs) const
     return result;
 }
 
+std::ostream& operator<<(std::ostream& os, const Album& a)
+{
+    os << a.getName().c_str();
+    return os;
+}
 void Album::print()
 {
     SongSet::iterator it;
     std::cout << "Album contains:" << std::endl;
     for (it=song_list.begin(); it!=song_list.end(); ++it)
-        std::cout << ' ' << (*it) << std::endl;
+        std::cout << ' ' << *it << std::endl;
     std::cout << '\n'; 
 };
 #endif

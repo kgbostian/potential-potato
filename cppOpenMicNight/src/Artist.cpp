@@ -38,10 +38,10 @@ AlbumSet Artist::getAlbums()
 
 void Artist::print()
 {
-    //AlbumSet::iterator it;
-    //std::cout << "Artist contains:" << std::endl;
-    //for (it=album_set.begin(); it!=album_set.end(); ++it)
-    //    std::cout << ' ' << (*it).print() // << std::endl;
-    //std::cout << '\n'; 
+    AlbumSet::iterator it;
+    std::cout << "Artist contains:" << std::endl;
+    for (it=album_set.begin(); it!=album_set.end(); ++it)
+        std::cout << ' ' << (*it) << std::endl;
+    std::cout << '\n'; 
 };
 #endif

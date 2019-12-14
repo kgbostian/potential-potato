@@ -13,11 +13,14 @@ TEST(ArtistTests, AddSongs)
     Artist a = Artist("Artist A");
     std::string an1 = "Album 1";
     std::string an2 = "Album 2";
+    std::string an3 = "Album 3";
     Song s1 = Song("Song A");
     Song s2 = Song("Song C");
     Song s3 = Song("Song B");
     a.addAlbum(an1);
-    ASSERT_EQ(1, a.getAlbums().size());
+    a.addAlbum(an3);
+    a.addAlbum(an2);
+    ASSERT_EQ(3, a.getAlbums().size());
     //a.addSong(an1, s1);
     //ASSERT_EQ(1,songs.size());
     //a.addSong(an, s2);
@@ -27,6 +30,7 @@ TEST(ArtistTests, AddSongs)
     //songs = a.getSongs();
     //ASSERT_EQ(3,a.getSongs().size());
     //ASSERT_EQ(2, a.getAlbums().size());
+    a.print();
 };
 
 //TEST(ArtistTests, DISABLED_RemoveSongs)
