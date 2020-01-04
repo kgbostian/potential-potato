@@ -7,8 +7,8 @@
 class Song
 {
     std::string name;
-    int count = 0;
-    int request_count = 0;
+    mutable int count = 0;
+    mutable int request_count = 0;
   public:
     Song(std::string name);
     bool operator<(const Song &rhs) const;

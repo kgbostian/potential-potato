@@ -8,7 +8,7 @@ typedef std::set<Song> SongSet;
 class Album
 {
     std::string name = "";
-    SongSet song_list;
+    mutable SongSet song_list;
   public:
     Album(std::string name);
     void addSong(Song song);

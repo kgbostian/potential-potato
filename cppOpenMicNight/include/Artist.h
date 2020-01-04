@@ -12,12 +12,13 @@ class Artist
   public:
     Artist(std::string name);
     std::string getName(){return name;};
-    void addAlbum(std::string album);
     AlbumSet getAlbums();
-    friend std::ostream& operator<<(std::ostream& os, const Album& a);
-//    void addSong(std::string song);
+    void addAlbum(std::string album);
+    void removeAlbum(std::string album);
+    SongSet getSongs(std::string album);
+    void addSong(std::string album, std::string song);
 //    void removeSong(std::string album_name, std::string song_name);
-//    void removeAblum(std::string &album);
     void print();
+    friend std::ostream& operator<<(std::ostream& os, const Album& a);
 };
 #endif
