@@ -31,11 +31,11 @@ void Artist::removeAlbum(std::string album_name)
 //    ai->addSong(song);
 //};
 
-SongSet Artist::getSongs(std::string album_name)
-{
-    AlbumSet::iterator ai = album_set.find(album_name);
-    return ai->getSongs();
-};
+//SongSet Artist::getSongs(std::string album_name)
+//{
+//    AlbumSet::iterator ai = album_set.find(album_name);
+//    return ai->getSongs();
+//};
 
 //void Artist::removeSong(std::string albumn_name, std::string song_name)
 //{
