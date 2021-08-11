@@ -4,11 +4,9 @@ name: CI
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
+  # Triggers the workflow on push or pull request events but only for the cppAdditions branch
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    branches: [ cppAdditions ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -23,14 +21,29 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@latest
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - run:
+          name: Installing SUDO
+          command: 'apt-get update && apt-get install -y sudo && rm -rf /var/lib/apt/lists/*'
+      - run:
+          name: Installing GCC
+          command: 'apt-get update && apt-get install -y gcc g++'
+      - run:
+          name: Install CMAKE
+          command: 'apt-get update && sudo apt-get install -y cmake'
+      - run:
+          name: Install GTest
+          command: 'sudo apt-get install -y libgtest-dev'
+      - run:
+          name: Build GTest
+          command: 'cd cppOpenMicNight && ./install_gtest.sh'
+      - run:
+          name: Build Makefile
+          command: 'cd cppOpenMicNight && cmake CMakeLists.txt'
+      - run:
+          name: Build Src
+          command: 'cd cppOpenMicNight && make'
+      - run:
+          name: Run Tests
+          command: 'cd cppOpenMicNight && ./allTests'
