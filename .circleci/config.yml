@@ -36,8 +36,16 @@ jobs:
           name: Installing GCC
           command: 'sudo apt-get install -y gcc g++'
       - run:
-          name: Install CMAKE
-          command: 'sudo apt-get install -y cmake'
+          name: Install Build Tools
+          command: 'sudo apt-get install build-essential libssl-dev'
+          command: 'cd /tmp'
+          command: 'wget https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0.tar.gz'
+          command: 'tar -zxvf cmake-3.20.0.tar.gz'
+          command: 'cd cmake-3.20.0'
+          command: './bootstrap'
+          command: 'make'
+          command: 'sudo make install'
+          command: 'cmake --version'
       - run:
           name: Install GTest
           command: 'sudo apt-get install -y libgtest-dev'
