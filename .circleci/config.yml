@@ -13,16 +13,10 @@ jobs:
       - checkout
       - run: sudo chown -R circleci:circleci /usr/local/bin
       - run: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
-      #- restore_cache:
-      #    key: deps9-{{ .Branch }}-{{ checksum "poetry.lock" }}
       - run:
           name: install dependencies
           command: |
             cd openMicNight && poetry install
-      #- save_cache:
-      #    key: deps9-{{ .Branch }}-{{ checksum "poetry.lock" }}
-      #    paths:
-      #      - "/home/circleci/.cache/pypoetry/virtualenvs"
       - run:
           name: Analysis
           command: |
@@ -34,21 +28,19 @@ jobs:
 
   build_cpp:
     docker:
-      - image: "debian:stretch"
-    #working_directory: ~/cppOpenMicNight/
+      - image: "cimg/base:stable"
     steps:
       - checkout
       - run: ls -al
-      - run: pwd
       - run:
-          name: Installing SUDO
+          name: Installing Sudo
           command: 'apt-get update && apt-get install -y sudo && rm -rf /var/lib/apt/lists/*'
       - run:
           name: Installing GCC
           command: 'apt-get update && apt-get install -y gcc g++'
       - run:
           name: Install CMAKE
-          command: 'apt-get update && sudo apt-get install -y cmake'
+          command: 'sudo apt-get install -y cmake'
       - run:
           name: Install GTest
           command: 'sudo apt-get install -y libgtest-dev'
