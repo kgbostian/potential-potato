@@ -34,10 +34,10 @@ jobs:
       - run: ls -al
       - run:
           name: Installing GCC
-          command: 'sudo apt-get install -y gcc g++'
+          command: 'sudo apt-get update && sudo apt-get install -y gcc g++'
       - run:
           name: Install Build Tools
-          command: 'sudo apt-get install build-essential openssl'
+          command: 'sudo apt-get update && sudo apt-get install build-essential openssl'
       - run: cd /tmp
       - run: 'wget https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0.tar.gz'
       - run: 'tar -zxvf cmake-3.20.0.tar.gz'
