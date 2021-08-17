@@ -13,16 +13,10 @@ jobs:
       - checkout
       - run: sudo chown -R circleci:circleci /usr/local/bin
       - run: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
-      #- restore_cache:
-      #    key: deps9-{{ .Branch }}-{{ checksum "poetry.lock" }}
       - run:
           name: install dependencies
           command: |
             cd openMicNight && poetry install
-      #- save_cache:
-      #    key: deps9-{{ .Branch }}-{{ checksum "poetry.lock" }}
-      #    paths:
-      #      - "/home/circleci/.cache/pypoetry/virtualenvs"
       - run:
           name: Analysis
           command: |
@@ -34,8 +28,7 @@ jobs:
 
   build_cpp:
     docker:
-      - image: "debian:stretch"
-    #working_directory: ~/cppOpenMicNight/
+      - image: "debian:latest"
     steps:
       - checkout
       - run: ls -al
