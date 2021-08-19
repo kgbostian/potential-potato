@@ -23,19 +23,19 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Installing SUDO
-      - run: 'apt-get update && apt-get install -y sudo && rm -rf /var/lib/apt/lists/*'
+      #- name: Installing SUDO
+      #  run: 'apt-get update && apt-get install -y sudo && rm -rf /var/lib/apt/lists/*'
       - name: Installing GCC
-      - run: 'apt-get update && apt-get install -y gcc g++'
+        run: 'apt-get update && apt-get install -y gcc g++'
       - name: Install CMAKE
-      - run: 'apt-get update && sudo apt-get install -y cmake'
+        run: 'apt-get update && sudo apt-get install -y cmake'
       - name: Install GTest
-      - run: 'sudo apt-get install -y libgtest-dev'
+        run: 'sudo apt-get install -y libgtest-dev'
       - name: Build GTest
-      - run: 'cd cppOpenMicNight && ./install_gtest.sh'
+        run: 'cd cppOpenMicNight && ./install_gtest.sh'
       - name: Build Makefile
-      - run: 'cd cppOpenMicNight && cmake CMakeLists.txt'
+        run: 'cd cppOpenMicNight && cmake CMakeLists.txt'
       - name: Build Src
-      - run: 'cd cppOpenMicNight && make'
+        run: 'cd cppOpenMicNight && make'
       - name: Run Tests
-      - run: 'cd cppOpenMicNight && ./allTests'
+        run: 'cd cppOpenMicNight && ./allTests'
