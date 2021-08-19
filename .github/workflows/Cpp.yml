@@ -23,8 +23,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      #- name: Installing SUDO
-      #  run: 'apt-get update && apt-get install -y sudo && rm -rf /var/lib/apt/lists/*'
+      - name: Installing SUDO
+        run: 'apt-get update && apt-get install -y sudo && rm -rf /var/lib/apt/lists/*'
       - name: Installing GCC
         run: 'apt-get update && apt-get install -y gcc g++'
       - name: Install CMAKE
