@@ -16,4 +16,5 @@ SET(CMAKE_EXE_LINKER_FLAGS "-fprofile-arcs -ftest-coverage")
 add_executable(allTests test/AllTests.cpp src/Song.cpp src/Album.cpp src/Artist.cpp)
 target_link_libraries(allTests ${GTEST_LIBRARIES} pthread gtest_main gcov)
 #add_executable(testArtist test/test_artist.cpp)
+
 #target_link_libraries(testAlbum ${GTEST_LIBRARIES} pthread gtest_main)

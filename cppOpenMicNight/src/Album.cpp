@@ -8,6 +8,7 @@ Album::Album(std::string name)
 };
 
 void Album::addSong(Song song)
+
 {
     song_list.insert(song);
 };
