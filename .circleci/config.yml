@@ -28,38 +28,12 @@ jobs:
 
   build_cpp:
     docker:
-      - image: "cimg/base:stable"
+      - image: "scorpion454r/omncpp:latest"
     steps:
-      - checkout
-      - run: ls -al
-      - run:
-          name: Installing GCC
-          command: 'sudo apt-get update && sudo apt-get install -y gcc g++'
-      - run:
-          name: Install Build Tools
-          command: 'sudo apt-get update && sudo apt-get install build-essential openssl'
-      - run: cd /tmp
-      - run: 'wget https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0.tar.gz'
-      - run: 'tar -zxvf cmake-3.20.0.tar.gz'
-      - run: 'cd cmake-3.20.0 && ./bootstrap && make && sudo make install && cmake --version'
-      - run:
-          name: Install GTest
-          command: 'sudo apt-get install -y libgtest-dev'
-      - run:
-          name: Build GTest
-          command: 'cd cppOpenMicNight && ./install_gtest.sh'
-      - run:
-          name: Build Makefile
-          command: 'cd cppOpenMicNight && cmake CMakeLists.txt'
-      - run:
-          name: Build Src
-          command: 'cd cppOpenMicNight && make'
-      - run:
-          name: Run Tests
-          command: 'cd cppOpenMicNight && ./allTests'
+      - run: Export test results.
 
 workflows:
-  version: 2
+  version: 3
   build_cpp_app:
     jobs:
       - build:
