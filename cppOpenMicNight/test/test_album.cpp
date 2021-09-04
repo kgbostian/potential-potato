@@ -11,18 +11,29 @@ TEST(AlbumTests, DefaultAlbum)
 TEST(AlbumTests, AddSongs)
 {
     Album a = Album("Add Songs Album");
-    Song s1 = Song("Adding Song");
-    Song s2 = Song("Adding Song Two");
+    Song s1 = Song("Song A");
+    Song s2 = Song("Song C");
+    Song s3 = Song("Song B");
     a.addSong(s1);
-    std::set<Song> songs = a.getSongList();
+    SongSet songs = a.getSongs();
     ASSERT_EQ(1,songs.size());
     a.addSong(s2);
-    songs = a.getSongList();
+    songs = a.getSongs();
     ASSERT_EQ(2,songs.size());
-    //std::set<Song>::iterator it;
-    //for (it = songs.begin(); it != songs.end(); ++it)
-    //{
-    //    std::cout << ' ' << *it;
-    //    std::cout << '\n';
-    //}
+    a.addSong(s3);
+    songs = a.getSongs();
+    ASSERT_EQ(3,songs.size());
+};
+
+TEST(AlbumTests, RemoveSongs)
+{
+    Album a = Album("Add Songs Album");
+    Song s1 = Song("Song One");
+    Song s2 = Song("Song Two");
+    a.addSong(s1);
+    SongSet songs = a.getSongs();
+    ASSERT_EQ(1,songs.size());
+    a.removeSong(s1);
+    songs = a.getSongs();
+    ASSERT_EQ(0,songs.size());
 };

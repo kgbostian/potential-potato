@@ -10,10 +10,19 @@ sudo cmake CMakeLists.txt
 sudo make
 sudo cp *.a /usr/lig
 
+Installing valgrind:
+sudo pacman -S valgrind
 
+To get coverage reports.
+- make the project (instructions below)
+cd build
+gcov *.gc* -km
 
+To test for memory leaks with valgrind:
+valgrind --tool=memcheck -s ./allTests
 
 To compile and run the simple program.
-cmake CMakeLists.txt
+mkdir build && cd build
+cmake ..
 make
-./runTest
+./allTests

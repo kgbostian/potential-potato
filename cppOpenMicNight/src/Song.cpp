@@ -13,7 +13,15 @@ int Song::getCount()
 
 bool Song::operator<(const Song &rhs) const
 {
-    return getName().c_str() < rhs.getName().c_str();
+    //std::string a = getName();
+    //std::string b = rhs.getName();
+    //std::cout << "Operator<: a = " << a.c_str() << " and b = " << b.c_str() << std::endl;
+    //bool ab = a < b;
+    //std::cout << "A < B = " << ab << std::endl;
+    //bool cstr = a.c_str() < b.c_str();
+    //std::cout << "A.c_str() < B.c_str() = " << cstr << std::endl;
+    bool result = getName() < rhs.getName();
+    return result;
 }
 
 std::ostream& operator<<(std::ostream& os, const Song& s)
