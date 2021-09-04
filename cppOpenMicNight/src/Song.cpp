@@ -24,7 +24,6 @@ bool Song::operator<(const Song &rhs) const
     return result;
 }
 
-
 std::ostream& operator<<(std::ostream& os, const Song& s)
 {
     os << s.getName().c_str();
